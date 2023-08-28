@@ -1,0 +1,34 @@
+apparently there's something called GORM for connecting to a dabatase, I kind of wanna start there
+
+nvm, I'll use a connect, seriously f*ck ORM, also some useful information for myself https://pkg.go.dev/database/sql#Open
+
+I need to draw a model but as soon as a login into windows I'll go into star rail...
+
+coming back after a long time, wrote some structs, have to do the DB model at some point and a script to populate the DB
+
+I made a table, made some models need to populate the DB now, creating something like an MVP should be easy
+
+Got some data, I want a script that queries and also inserts it into the database like it's seeding from the web
+Problem: psycopg2 kinda sucks and I'm not sure I want to use venv for this one single dependecy, ideally I wouldn't have any python dependecy
+
+A few days later and after some consideration I might just get it on a json file and then write it on the database
+
+2023-08-23
+A LOT OF TIME HAS PASSED, I think I'm gonna do both, write it into a file that has the full query but I also wanna try go and write is through psql with subsprocess.run()
+
+2023-08-24
+Not sure I'll work on subprocess rn, think I'm gonna look into some integration with the database first and my old golang code
+
+2023-08-27
+It's saturday lol
+Gonna look into connection to the database
+I'll probably be using something different than pgsql when hosting it, won't worry about it for now
+Howeaver I can see something unusual coming, like an actual usage of clean code of watheaver
+I managed to make the connection work, took like an hour? idk, too much time as connecting to the db is always a pain
+
+It's saturday...anyways I need away to randomize the picked anime if I don't have an anime of the day
+The standard web approach would be easy, just check if there's a daily for that day it there isn't then create it
+Thinking about it now, the frontend will still query to check for a UserDaily and then create or get,
+or should I keep it all in the storage?
+
+Big thinking time
