@@ -1,12 +1,18 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
+	"nothing/anigame/controllers"
 	"nothing/anigame/pkg"
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
+
+type GuessRequest struct {
+	Number int32  `json:"number"`
+	Letter string `json:"letter"`
+}
 
 func setupRouter() *gin.Engine {
 	r := gin.Default()
@@ -19,11 +25,19 @@ func setupRouter() *gin.Engine {
 
 	// Get daily
 	r.GET("/daily", func(c *gin.Context) {
-		var romanji string
-		db.QueryRow("SELECT romanji FROM daily where picked_on = $1", time.Now().Format("2006-01-02")).Scan(&romanji)
+		picked_on, err := controllers.Daily(db)
 
-        // Would this even return anything? idk because each user will have it's own daily
-		c.JSON(http.StatusOK, gin.H{"date": time.Now().Format("2006-01-02"), "value": romanji})
+		c.JSON(http.StatusOK, gin.H{"value": picked_on, "error": err.Error()})
+	})
+
+	r.POST("/guess", func(c *gin.Context) {
+		var r GuessRequest
+		err := c.BindJSON(&r)
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+
+		c.JSON(http.StatusOK, gin.H{"number": r.Number, "letter": r.Letter, "error": err})
 	})
 
 	return r

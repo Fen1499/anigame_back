@@ -32,3 +32,20 @@ Thinking about it now, the frontend will still query to check for a UserDaily an
 or should I keep it all in the storage?
 
 Big thinking time
+
+2023-08-28
+I understand that keeping everything to the frontend is more cost effective, but for now I'll consider keeping everything
+but the answer on the local storage and querying the back to verify if a letter is present and it's position
+
+I'll use this space to describe how I plan it to work: at first it's not going to show anything, not even length
+as you guess the letter it's going to show how many character are between them. Take "Bakemonogatari" as an example,
+guessing M first would show "...M...", guessing B would show "B..." and guessing A would show ...A _ _ _ _ _ _ _ A _ A...
+It will also reveal special characters between those letters, and always reveal when they are on the edges of the title.
+
+I'll sort this out later and for now will think about the guessing endpoint
+Don't forget to change the models since I might not even need them.
+Tomorrow I'll check creating a daily when there is none and the number logic, still thinking if it's fine to do it on /daily
+
+2023-08-30
+Going into how to randomly pick a daily and also considering if it should work with all numbers as null
+
